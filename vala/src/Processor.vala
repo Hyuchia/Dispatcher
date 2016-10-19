@@ -30,10 +30,12 @@ class Processor {
         this.current_time = 0;
     }
 
+    // Runs a process in the processor
     public void execute (Process process) {
         int tcc = 0;
         int tvc = 0;
 
+        // Check if processor was sleeping
         if (process.arrival_time > this.current_time || entries.length () == 0) {
             this.current_time = process.arrival_time;
             if (entries.length () != 0) {
@@ -43,6 +45,7 @@ class Processor {
             tcc = Dispatcher.change_time;
         }
 
+        // Calculate TVC
         if ((process.execution_time % Dispatcher.quantum) == 0) {
             tvc = ((process.execution_time / Dispatcher.quantum)-1) * tcc;
         } else {
@@ -51,6 +54,7 @@ class Processor {
 
         this.entries.append (new Entry (process, tvc, tcc, this.current_time));
 
+        // Set Current Processor Time given the execution results
         this.current_time += tcc;
         this.current_time += tvc;
         this.current_time += process.blocked_time;

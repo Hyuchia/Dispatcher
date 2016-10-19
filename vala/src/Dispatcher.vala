@@ -27,29 +27,36 @@ class Dispatcher {
     public List<Processor> processors;
     public List<Process> processes;
 
+    // Compare which process has the lowest turn
     public static CompareFunc<Process> turn_compare = (a, b) => {
         return (int) (a.turn > b.turn ) - (int) (a.turn < b.turn);
     };
 
+    // Compare which process has the lowest
+    // combination of  execution time and turn
     public static CompareFunc<Process> time_compare = (a, b) => {
         stdout.printf ("%s vs %s -> %d\n",a.id, b.id,(int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b));
         return (int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b);
     };
 
+    // Dispatcher Constructor
     public Dispatcher (int processors, int quantum, int block_time, int change_time) {
         Dispatcher.block_time = block_time;
         Dispatcher.change_time = change_time;
         Dispatcher.quantum = quantum;
 
+        // Create the processor objects
         for (int i = 0; i < processors; i++) {
             this.processors.append (new Processor (i));
         }
     }
 
+    // Add a process to the list using the compare function to sort them
     public void add_process (string id, int execution_time, int times_blocked, int arrival_time) {
         this.processes.insert_sorted (new Process(id, execution_time, arrival_time, times_blocked, (int) this.processes.length ()), time_compare);
     }
 
+    // Returns the best processor to use currently
     private Processor get_best (int arrival_time) {
         Processor best_processor = (this.processors.first ()).data;
         foreach (Processor processor in this.processors) {
@@ -63,6 +70,7 @@ class Dispatcher {
         return best_processor;
     }
 
+    // Executes the list of processes
     public void dispatch () {
         foreach (Process process in this.processes) {
             Processor best = get_best (process.arrival_time);

@@ -1,5 +1,5 @@
-/* Copyright 2016 
-* 
+/* Copyright 2016
+*
 * Diego Islas Ocampo
 * Luis Fernando Saavedra
 *
@@ -33,6 +33,8 @@ class Process {
         this.execution_time = execution_time;
         this.arrival_time = arrival_time;
         this.times_blocked = times_blocked;
+
+        // Calculate total time blocked
         this.blocked_time = times_blocked * Dispatcher.block_time;
         this.turn = turn;
     }

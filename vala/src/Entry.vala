@@ -1,5 +1,5 @@
-/* Copyright 2016 
-* 
+/* Copyright 2016
+*
 * Diego Islas Ocampo
 * Luis Fernando Saavedra
 *
@@ -19,6 +19,7 @@
 * with Dispatcher. If not, see http://www.gnu.org/licenses/.
 */
 
+// The entry class is used only to hold information for the table
 class Entry {
     public int tcc;
     public int te;
