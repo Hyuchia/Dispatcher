@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-family: "Open Sans", sans-serif;
+}
+input:focus, select:focus,
+textarea:focus, button:focus,
+[contenteditable="true"], * {
+  outline: none;
+}
+h1{
+    font-size: 1.563em;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+}
+p{
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+}
+p.p--lead{
+    margin-bottom: 7em;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 400px;
+}
+button{
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    color: #000000;
+    font-size: 1em;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+input, textarea{
+    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.53);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    background-color: transparent;
+    border-radius: 2em;
+    font-size: 1.125em;
+    resize: none;
+}
+.flex,
+.flex--col{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.flex.-nowrap,
+.flex--col.-nowrap{
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -o-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+.flex--col{
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+}
+.flex.-justify-center,
+.flex--col.-justify-center{
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+}
+.flex.-justify-between,
+.flex--col.-justify-between{
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+}
+.flex__item.-s6{
+    width: 50%;
+}
+.app-wrapper{
+    width: 300vw;
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.2s ease-in 0s;
+}
+.app-wrapper.is-configuring{
+    -webkit-transform: translateX(-100vw);
+    transform: translateX(-100vw);
+}
+.app-wrapper.is-terminated{
+    -webkit-transform: translateX(-200vw);
+    transform: translateX(-200vw);
+}
+.app-section{
+    width: 100vw;
+    height: 100vh;
+}
+.app-section__wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    overflow-y: scroll;
+}
+.app-section__wrapper.-full-width{
+    padding: 0;
+}
+.app-section__action-btn{
+    margin-bottom: 1.5em;
+}
+.app-name{
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-bottom: 1.5em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.form__group{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    width: 100%;
+    max-width: 700px;
+}
+.form__group input{
+    width: calc(100%/2 - 0.5em);
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    transition: all 0.2s ease-in 0s;
+}
+.form textarea{
+    width: 100%;
+    height: 8em;
+    max-width: 700px;
+    border-radius: 0.5em;
+    margin: 0.5em auto 2em;
+    padding: 10px;
+    text-align: left;
+    transition: all 0.2s ease-in 0s;
+}
+.form__group input:hover,
+.form__group input:focus,
+.form textarea:hover,
+.form textarea:focus{
+    border-color: #ffffff;
+}
+.form__group input.is-filled,
+.form__group input.is-filled,
+.form textarea.is-filled,
+.form textarea.is-filled{
+    border-color: #0099FF;
+}
+.stats{
+    margin: 0 auto;
+}
+.stats__group p{
+    margin-bottom: 0;
+    font-size: 12px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.stats__big-number{
+    font-weight: bold;
+    font-size: 3em;
+    margin-right: 10px;
+    text-align: left;
+}
+.stats_medium-number{
+    display: inline-block;
+    min-width: 3em;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.563em;
+    margin-right: 0.5em;
+}
+.list{
+    margin-top: 2em;
+}
+.processor{
+    width: 100%;
+    margin: 1.5em auto 0;
+}
+.processor__title{
+    font-weight: 700;
+    font-size: 1.125em;
+    position: relative;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+.processor__title:before{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #000000;
+}
+.processor__table, .table{
+    width: 100%;
+    background-color: #000033;
+    margin-top: 0.5em;
+    padding: 1em;
+}
+.table__row{
+    width: 100%;
+    min-height: 2.375em;
+}
+.table__row.flex .flex__item{
+    width: calc(100%/8);
+}
+.table__header,
+.table__data{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table__header{
+    font-weight: 600;
+    color: #0099FF;
+}
+
+@media screen and (min-width: 959px){
+    .app-wrapper{
+        width: 150vw;
+    }
+    .app-wrapper.is-configuring{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    .app-wrapper.is-terminated{
+        -webkit-transform: translateX(-50vw);
+        transform: translateX(-50vw);
+    }
+    .app-section{
+        width: 50vw;
+    }
+    .form textarea{
+        height: 13em;
+    }
+    .processor__table{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1em;
+        border-radius: 5px;
+    }
+}
+
+.h-talign-center{
+    text-align: center;
+}
+.h-bkg-primary{
+    background-color: #000033;
+}
+.h-color-white{
+    color: #ffffff;
+}
+.h-balign-left{
+    margin-left: 0;
+}
+.h-wrapper-padding{
+    padding: 1em 2em 0.5em;
+}
