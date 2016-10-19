@@ -36,7 +36,9 @@ class Processor {
 
         if (process.arrival_time > this.current_time || entries.length () == 0) {
             this.current_time = process.arrival_time;
-            this.entries.append (new Entry (null, tvc, tcc, this.current_time));
+            if (entries.length () != 0) {
+                this.entries.append (new Entry (null, tvc, tcc, this.current_time));
+            }
         } else {
             tcc = Dispatcher.change_time;
         }

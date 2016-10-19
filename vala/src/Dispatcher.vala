@@ -1,5 +1,5 @@
-/* Copyright 2016 
-* 
+/* Copyright 2016
+*
 * Diego Islas Ocampo
 * Luis Fernando Saavedra
 *
@@ -28,7 +28,7 @@ class Dispatcher {
     public List<Process> processes;
 
     public static CompareFunc<Process> timecmp = (a, b) => {
-        return ((int) (a.arrival_time > b.arrival_time ) - (int) (a.arrival_time < b.arrival_time)) + ((int) (a.turn > b.turn ) - (int) (a.turn < b.turn));
+        return ((int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time)) + ((int) (a.turn > b.turn ) - (int) (a.turn < b.turn));
     };
 
     public Dispatcher (int processors, int quantum, int block_time, int change_time) {
@@ -50,7 +50,6 @@ class Dispatcher {
         foreach (Processor processor in this.processors) {
             if (processor.current_time < best_processor.current_time  && processor.current_time >= arrival_time) {
                 best_processor = processor;
-
             } else if (processor.current_time <= best_processor.current_time && processor.current_time < arrival_time) {
                best_processor = processor;
                break;
@@ -63,31 +62,6 @@ class Dispatcher {
         foreach (Process process in this.processes) {
             Processor best = get_best (process.arrival_time);
             best.execute (process);
-            stdout.printf ("Sent Process %s to Processor %d -> %d\n ", process.id, best.id, best.current_time);
         }
     }
-
-    /*public static void main (string[] args) {
-        Dispatcher dispatcher = new Dispatcher (2, 10, 0);
-
-        dispatcher.add_process ("A", 400, 3000, 2);
-        dispatcher.add_process ("B", 300, 0, 2);
-        dispatcher.add_process ("C", 50, 3000, 2);
-        dispatcher.add_process ("D", 100, 0, 2);
-        dispatcher.add_process ("E", 1000, 3000, 5);
-        dispatcher.add_process ("F", 500, 0, 3);
-        dispatcher.add_process ("G", 10, 3000, 2);
-        dispatcher.add_process ("H", 700, 0, 4);
-        dispatcher.add_process ("I", 450, 3000, 3);
-        dispatcher.add_process ("J", 300, 1500, 2);
-        dispatcher.add_process ("K", 100, 4000, 2);
-        dispatcher.add_process ("L", 3000, 1500, 5);
-        dispatcher.add_process ("M", 80, 4000, 2);
-        dispatcher.add_process ("N", 50, 1500, 2);
-        dispatcher.add_process ("Ñ", 500, 8000, 3);
-        dispatcher.add_process ("O", 600, 1500, 3);
-        dispatcher.add_process ("P", 600, 4000, 3);
-
-        dispatcher.dispatch ();
-    }*/
 }

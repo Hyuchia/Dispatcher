@@ -1,5 +1,5 @@
-/* Copyright 2016 
-* 
+/* Copyright 2016
+*
 * Diego Islas Ocampo
 * Luis Fernando Saavedra
 *
@@ -35,7 +35,6 @@ public class Main : Gtk.Window {
 
 		Gtk.Box inputs = new Gtk.Box (Orientation.HORIZONTAL, 10);
 
-
 		Gtk.Label processors_label = new Gtk.Label ("Processors: ");
 		Gtk.SpinButton processors = new Gtk.SpinButton.with_range (1, 1000, 1);
 
@@ -67,16 +66,11 @@ public class Main : Gtk.Window {
 
 		Gtk.Button load = new Gtk.Button.with_label ("Load");
 
-
-
 		inputs.add (load);
-
 
 		Gtk.Button run = new Gtk.Button.with_label ("Run");
 
 		inputs.add (run);
-
-
 
 		container.add (inputs);
 
@@ -88,7 +82,6 @@ public class Main : Gtk.Window {
 		processes.expand = true;
 
 		Box scroll = new Box (Orientation.VERTICAL, 20);
-
 
 		load.clicked.connect(() => {
 			var file_chooser = new FileChooserDialog ("Open File", this,
@@ -118,6 +111,9 @@ public class Main : Gtk.Window {
 		container.add (areas);
 
 		run.clicked.connect (() => {
+			Timer timer = new Timer ();
+			timer.start ();
+
 			var children = scroll.get_children ();
 
 			children.foreach((child)=>{
@@ -145,58 +141,65 @@ public class Main : Gtk.Window {
 				}
 			}
 
-			dispatcher.dispatch ();
 
+			dispatcher.dispatch ();
+			timer.stop ();
+			ulong microseconds;
+			double seconds = timer.elapsed (out microseconds);
+			stdout.printf (": %s, %lu\n", seconds.to_string (), microseconds);
 
 
 			foreach (Processor processor in dispatcher.processors) {
-				Gtk.Grid results = new Gtk.Grid ();
 
-				results.row_spacing = 10;
-				results.column_homogeneous = true;
+				if (processor.entries.length () > 0) {
+					Gtk.Grid results = new Gtk.Grid ();
 
-				results.attach (new Gtk.Label ("Procesador # " + (processor.id + 1).to_string ()), 0, 0, 8, 1);
-				results.attach (new Gtk.Label ("Proceso"), 0, 1, 1, 1);
-				results.attach (new Gtk.Label ("TCC"), 1, 1, 1, 1);
-				results.attach (new Gtk.Label ("TE"), 2, 1, 1, 1);
-				results.attach (new Gtk.Label ("TVC"), 3, 1, 1, 1);
-				results.attach (new Gtk.Label ("TB"), 4, 1, 1, 1);
-				results.attach (new Gtk.Label ("TT"), 5, 1, 1, 1);
-				results.attach (new Gtk.Label ("TI"), 6, 1, 1, 1);
-				results.attach (new Gtk.Label ("TF"), 7, 1, 1, 1);
+					results.row_spacing = 10;
+					results.column_homogeneous = true;
 
-		  		results.expand = true;
-		  		int count = 2;
-		  		foreach (Entry entry in processor.entries) {
+					results.attach (new Gtk.Label ("Procesador # " + (processor.id + 1).to_string ()), 0, 0, 8, 1);
+					results.attach (new Gtk.Label ("Proceso"), 0, 1, 1, 1);
+					results.attach (new Gtk.Label ("TCC"), 1, 1, 1, 1);
+					results.attach (new Gtk.Label ("TE"), 2, 1, 1, 1);
+					results.attach (new Gtk.Label ("TVC"), 3, 1, 1, 1);
+					results.attach (new Gtk.Label ("TB"), 4, 1, 1, 1);
+					results.attach (new Gtk.Label ("TT"), 5, 1, 1, 1);
+					results.attach (new Gtk.Label ("TI"), 6, 1, 1, 1);
+					results.attach (new Gtk.Label ("TF"), 7, 1, 1, 1);
 
-		  			if (entry.process != null) {
-		  				results.attach (new Gtk.Label (entry.process.id), 0, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.tcc.to_string ()), 1, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.te.to_string ()), 2, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.tvc.to_string ()), 3, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.tb.to_string ()), 4, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.tt.to_string ()), 5, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.ti.to_string ()), 6, count, 1, 1);
-			  			results.attach (new Gtk.Label (entry.tf.to_string ()), 7, count, 1, 1);
-		  			} else {
-		  				results.attach (new Gtk.Label (""), 0, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 1, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 2, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 3, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 4, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 5, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 6, count, 1, 1);
-			  			results.attach (new Gtk.Label (""), 7, count, 1, 1);
+			  		results.expand = true;
+			  		int count = 2;
+			  		foreach (Entry entry in processor.entries) {
 
-		  			}
+			  			if (entry.process != null) {
+			  				results.attach (new Gtk.Label (entry.process.id), 0, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.tcc.to_string ()), 1, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.te.to_string ()), 2, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.tvc.to_string ()), 3, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.tb.to_string ()), 4, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.tt.to_string ()), 5, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.ti.to_string ()), 6, count, 1, 1);
+				  			results.attach (new Gtk.Label (entry.tf.to_string ()), 7, count, 1, 1);
+			  			} else {
+			  				results.attach (new Gtk.Label (""), 0, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 1, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 2, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 3, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 4, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 5, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 6, count, 1, 1);
+				  			results.attach (new Gtk.Label (""), 7, count, 1, 1);
 
-		  			count ++;
-		  		}
+			  			}
 
-		  		//results.enable_grid_lines = true;
+			  			count ++;
+			  		}
 
-		  		scroll.add (results);
-		  		scroll.show_all ();
+			  		scroll.add (results);
+			  		scroll.show_all ();
+			  	} else {
+			  		break;
+			  	}
 			}
 
 

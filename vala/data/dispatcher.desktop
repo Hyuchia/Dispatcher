@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Dispatcher
+GenericName=Dispatcher
+Comment=A Process Dispatcher Simulator.
+Categories=GTK;Utility;
+Exec=dispatcher
+Icon=dispatcher
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=dispatcher
+Keywords=Process;Processor;Simulator;
