@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M49,112.980001 L49,35 L69.6197118,35 C78.7245652,35 85.98156,37.8920865 91.390914,43.6763463 C96.8002681,49.460606 99.5584617,57.3870653 99.6655776,67.455962 L99.6655776,80.0955775 C99.6655776,90.3430007 96.9609412,98.3855005 91.5515871,104.223318 C86.1422331,110.061136 78.688862,112.980001 69.1912503,112.980001 L49,112.980001 Z M64.7459618,48.1216348 L64.7459618,99.911924 L69.4590387,99.911924 C74.7077189,99.911924 78.4031628,98.5283641 80.5454812,95.7612028 C82.6877996,92.9940414 83.8124999,88.2185282 83.9196159,81.4345199 L83.9196159,67.8844235 C83.9196159,60.6005409 82.9020299,55.5215371 80.8668274,52.6472599 C78.8316248,49.7729826 75.368262,48.264456 70.4766349,48.1216348 L64.7459618,48.1216348 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="4" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.6   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowOffsetOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="8" dy="8" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.6   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowOffsetOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="School-shit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-118.000000, -44.000000)">
+            <g id="logo" transform="translate(113.000000, 38.000000)">
+                <circle id="Oval" fill="#000033" cx="75" cy="76" r="70"></circle>
+                <g id="D">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

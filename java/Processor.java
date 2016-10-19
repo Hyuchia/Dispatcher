@@ -19,42 +19,41 @@
 * with Dispatcher. If not, see http://www.gnu.org/licenses/.
 */
 
-class Processor {
+import java.util.*;
+
+public class Processor {
 
     public int id;
     public int current_time;
-    public List<Entry> entries;
+    public ArrayList<Entry> entries;
 
     public Processor (int id) {
         this.id = id;
         this.current_time = 0;
+        entries = new ArrayList<Entry>();
     }
 
-    // Runs a process in the processor
     public void execute (Process process) {
         int tcc = 0;
         int tvc = 0;
 
-        // Check if processor was sleeping
-        if (process.arrival_time > this.current_time || entries.length () == 0) {
+        if (process.arrival_time > this.current_time || entries.size () == 0) {
             this.current_time = process.arrival_time;
-            if (entries.length () != 0) {
-                this.entries.append (new Entry (null, tvc, tcc, this.current_time));
+            if (entries.size () != 0) {
+                this.entries.add (new Entry (null, tvc, tcc, this.current_time));
             }
         } else {
             tcc = Dispatcher.change_time;
         }
 
-        // Calculate TVC
         if ((process.execution_time % Dispatcher.quantum) == 0) {
             tvc = ((process.execution_time / Dispatcher.quantum)-1) * tcc;
         } else {
             tvc = ((int)(process.execution_time / Dispatcher.quantum)) * tcc;
         }
 
-        this.entries.append (new Entry (process, tvc, tcc, this.current_time));
+        this.entries.add (new Entry (process, tvc, tcc, this.current_time));
 
-        // Set Current Processor Time given the execution results
         this.current_time += tcc;
         this.current_time += tvc;
         this.current_time += process.blocked_time;

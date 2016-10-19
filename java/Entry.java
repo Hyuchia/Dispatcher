@@ -19,7 +19,6 @@
 * with Dispatcher. If not, see http://www.gnu.org/licenses/.
 */
 
-// The entry class is used only to hold information for the table
 class Entry {
     public int tcc;
     public int te;
@@ -28,9 +27,9 @@ class Entry {
     public int tt;
     public int ti;
     public int tf;
-    public Process? process;
+    public Process process;
 
-    public Entry (Process? process, int tvc, int tcc, int ti) {
+    public Entry (Process process, int tvc, int tcc, int ti) {
         if (process != null) {
             this.process = process;
             this.te = process.execution_time;
