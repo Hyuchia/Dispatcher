@@ -52,6 +52,23 @@ p.p--lead{
     margin-left: auto;
     max-width: 400px;
 }
+a{
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+.link{
+    text-decoration: underline;
+}
+.link--external{
+    color: rgba(0, 0, 0, 0.53);
+    font-size: 0.875em;
+    display: block;
+    margin-top: 1em;
+}
+.link--external:hover{
+    color: #000000;
+}
 button{
     display: block;
     margin: 0 auto;
@@ -156,6 +173,9 @@ input, textarea{
 }
 .app-section__action-btn{
     margin-bottom: 1.5em;
+}
+.app-logo{
+    margin-bottom: 1em;
 }
 .app-name{
     font-size: 2.5em;

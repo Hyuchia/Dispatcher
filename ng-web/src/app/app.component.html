@@ -1,8 +1,13 @@
 <div class="app-wrapper flex -nowrap" [ngClass]="{'is-configuring': isConfiguring(), 'is-terminated': isTerminated()}">
     <section class="app-section">
         <div class="app-section__wrapper flex--col -justify-center h-talign-center">
+            <img src="assets/logo.svg" alt="App logo" class="app-logo"/>
             <h1 class="app-name">Dispatcher</h1>
-            <p class="p--lead">A process dispatcher simulator created by Diego Islas and Fernando Saavedra</p>
+            <p class="p--lead">A process dispatcher simulator created by
+                <a href="https://twitter.com/HyuchiaDiego" class="link">Diego Islas</a> and
+                <a href="https://twitter.com/FernandoS_12" class="link">Fernando Saavedra</a>
+                <a href="https://github.com/HyuchiaDiego/Dispatcher" class="link--external">[ View on Github ]</a>
+            </p>
             <button class="app-section__action-btn js-next" (click)="nextSection('Configure')">Get started <i class="fa fa-long-arrow-right"></i></button>
         </div>
     </section>
