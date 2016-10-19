@@ -1,0 +1,27 @@
+<div class="list__processor processor">
+    <p class="processor__title">Processor #{{processor.id + 1}}</p>
+    <div class="processor__table table h-color-white h-talign-center">
+        <div class="table__row flex -nowrap">
+            <p class="table__header flex__item">Process</p>
+            <p class="table__header flex__item">TCC</p>
+            <p class="table__header flex__item">TE</p>
+            <p class="table__header flex__item">TVC</p>
+            <p class="table__header flex__item">TB</p>
+            <p class="table__header flex__item">TT</p>
+            <p class="table__header flex__item">TI</p>
+            <p class="table__header flex__item">TF</p>
+        </div>
+        <div class="table__row process flex -nowrap" *ngFor="let entry of entries">
+            <template [ngIf]="entry.process">
+                <p class="table__data flex__item">{{entry.process.id}}</p>
+                <p class="table__data flex__item">{{entry.tcc}}</p>
+                <p class="table__data flex__item">{{entry.te}}</p>
+                <p class="table__data flex__item">{{entry.tvc}}</p>
+                <p class="table__data flex__item">{{entry.tb}}</p>
+                <p class="table__data flex__item">{{entry.tt}}</p>
+                <p class="table__data flex__item">{{entry.ti}}</p>
+                <p class="table__data flex__item">{{entry.tf}}</p>
+            </template>
+        </div>
+    </div>
+</div>

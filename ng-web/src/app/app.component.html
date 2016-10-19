@@ -1,0 +1,55 @@
+<div class="app-wrapper flex -nowrap" [ngClass]="{'is-configuring': isConfiguring(), 'is-terminated': isTerminated()}">
+    <section class="app-section">
+        <div class="app-section__wrapper flex--col -justify-center h-talign-center">
+            <h1 class="app-name">Dispatcher</h1>
+            <p class="p--lead">A process dispatcher simulator created by Diego Islas and Fernando Saavedra</p>
+            <button class="app-section__action-btn js-next" (click)="nextSection('Configure')">Get started <i class="fa fa-long-arrow-right"></i></button>
+        </div>
+    </section>
+    <section class="app-section h-bkg-primary">
+        <div class="app-section__wrapper">
+
+            <form class="form" (ngSubmit)="dispatch()" [formGroup]="configForm">
+
+                <h1 class="header -h4 h-color-white">Configure your dispatcher</h1>
+                <p class="h-color-white">Enter the base configuration</p>
+                <div class="form__group flex -justify-between">
+
+                    <input type="number" min="1" name="processors" placeholder="Processors" required formControlName="processors" [ngClass]="{'is-filled': isFilled(processors)}" #processors/>
+                    <input type="number" min="0" name="quantum" placeholder="Quantum" required formControlName="quantum" [ngClass]="{'is-filled': isFilled(quantum)}" #quantum/>
+                    <input type="number" min="0" name="block_time" placeholder="Block Time" required formControlName="block_time" [ngClass]="{'is-filled': isFilled(blockTime)}" #blockTime/>
+                    <input type="number" min="0" name="change_time" placeholder="Change Time" required formControlName="change_time" [ngClass]="{'is-filled': isFilled(changeTime)}"  #changeTime/>
+
+                </div>
+                <p class="h-color-white">Enter the processess to dispatch
+    in the given format:</p>
+
+                <textarea name="processess" placeholder="Id Execution_time Arrival_time Times_blocked" required formControlName="processess" [ngClass]="{'is-filled': isFilled(processess)}" #processess></textarea>
+
+                <button class="app-section__action-btn js-next h-color-white" type="submit">Dispatch <i class="fa fa-long-arrow-right"></i></button>
+            </form>
+        </div>
+    </section>
+    <section class="app-section">
+        <div class="app-section__wrapper -full-width">
+            <div class="app-section__header h-wrapper-padding">
+                <button class="app-section__action-btn js-back h-balign-left" (click)="nextSection('Configure')"><i class="fa fa-long-arrow-left"></i> Reconfigure</button>
+                <h1 class="header -h4">The result</h1>
+            </div>
+            <div class="stats flex -nowrap h-wrapper-padding">
+                <div class="stats__main-stat flex__item -s6 flex--col -justify-center h-talign-center">
+                    <p><span class="stats__big-number">{{resultConfig.processess}}</span> Processess</p>
+                </div>
+                <div class="stats__group flex__item -s6">
+                    <p><span class="stats_medium-number">{{resultConfig.processors}}</span> Processors</p>
+                    <p><span class="stats_medium-number">{{resultConfig.quantum}}</span> Quantum Time</p>
+                    <p><span class="stats_medium-number">{{resultConfig.block_time}}</span> Block Time</p>
+                    <p><span class="stats_medium-number">{{resultConfig.change_time}}</span> Change Time</p>
+                </div>
+            </div>
+            <div class="list">
+                <app-processor *ngFor="let processor of processors_list" [processor]="processor"></app-processor>
+            </div>
+        </div>
+    </section>
+</div>
