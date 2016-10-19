@@ -27,8 +27,13 @@ class Dispatcher {
     public List<Processor> processors;
     public List<Process> processes;
 
-    public static CompareFunc<Process> timecmp = (a, b) => {
-        return ((int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time)) + ((int) (a.turn > b.turn ) - (int) (a.turn < b.turn));
+    public static CompareFunc<Process> turn_compare = (a, b) => {
+        return (int) (a.turn > b.turn ) - (int) (a.turn < b.turn);
+    };
+
+    public static CompareFunc<Process> time_compare = (a, b) => {
+        stdout.printf ("%s vs %s -> %d\n",a.id, b.id,(int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b));
+        return (int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b);
     };
 
     public Dispatcher (int processors, int quantum, int block_time, int change_time) {
@@ -42,7 +47,7 @@ class Dispatcher {
     }
 
     public void add_process (string id, int execution_time, int times_blocked, int arrival_time) {
-        this.processes.insert_sorted (new Process(id, execution_time, arrival_time, times_blocked, (int) this.processes.length ()), timecmp);
+        this.processes.insert_sorted (new Process(id, execution_time, arrival_time, times_blocked, (int) this.processes.length ()), time_compare);
     }
 
     private Processor get_best (int arrival_time) {

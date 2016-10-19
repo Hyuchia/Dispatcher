@@ -62,5 +62,8 @@
     # install the binaries we just made
     install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
+    # install the icon
+    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/data/dispatcher.svg" DESTINATION ${DATADIR}/pixmaps/)
+
     # install our .desktop file so the Applications menu will see it
     install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/dispatcher.desktop DESTINATION ${DATADIR}/applications/)
