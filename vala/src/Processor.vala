@@ -47,9 +47,9 @@ class Processor {
 
         // Calculate TVC
         if ((process.execution_time % Dispatcher.quantum) == 0) {
-            tvc = ((process.execution_time / Dispatcher.quantum)-1) * tcc;
+            tvc = ((process.execution_time / Dispatcher.quantum)-1) * Dispatcher.change_time;
         } else {
-            tvc = ((int)(process.execution_time / Dispatcher.quantum)) * tcc;
+            tvc = ((int)(process.execution_time / Dispatcher.quantum)) * Dispatcher.change_time;
         }
 
         this.entries.append (new Entry (process, tvc, tcc, this.current_time));

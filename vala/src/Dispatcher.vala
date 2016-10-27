@@ -35,7 +35,6 @@ class Dispatcher {
     // Compare which process has the lowest
     // combination of  execution time and turn
     public static CompareFunc<Process> time_compare = (a, b) => {
-        stdout.printf ("%s vs %s -> %d\n",a.id, b.id,(int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b));
         return (int) (a.arrival_time > b.arrival_time) - (int) (a.arrival_time < b.arrival_time) + turn_compare (a, b);
     };
 
