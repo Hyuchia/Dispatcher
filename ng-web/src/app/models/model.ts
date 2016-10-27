@@ -113,9 +113,9 @@ export class Processor{
         }
 
         if ((process.execution_time % Dispatcher.quantum) == 0) {
-            tvc = ((process.execution_time / Dispatcher.quantum)-1) * tcc;
+            tvc = ((process.execution_time / Dispatcher.quantum)-1) * Dispatcher.change_time;
         } else {
-            tvc = (Math.trunc(process.execution_time / Dispatcher.quantum)) * tcc;
+            tvc = (Math.trunc(process.execution_time / Dispatcher.quantum)) * Dispatcher.change_time;
         }
 
         this.entries.push(new Entry (process, tvc, tcc, this.current_time));

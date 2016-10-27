@@ -1,6 +1,6 @@
 <div class="app-wrapper flex -nowrap" [ngClass]="{'is-configuring': isConfiguring(), 'is-terminated': isTerminated()}">
     <section class="app-section">
-        <div class="app-section__wrapper flex--col -justify-center h-talign-center">
+        <div class="app-section__wrapper flex--col -nowrap -justify-center h-talign-center">
             <img src="assets/logo.svg" alt="App logo" class="app-logo"/>
             <h1 class="app-name">Dispatcher</h1>
             <p class="p--lead">A process dispatcher simulator created by
@@ -21,7 +21,7 @@
                 <div class="form__group flex -justify-between">
 
                     <input type="number" min="1" name="processors" placeholder="Processors" required formControlName="processors" [ngClass]="{'is-filled': isFilled(processors)}" #processors/>
-                    <input type="number" min="0" name="quantum" placeholder="Quantum" required formControlName="quantum" [ngClass]="{'is-filled': isFilled(quantum)}" #quantum/>
+                    <input type="number" min="1" name="quantum" placeholder="Quantum" required formControlName="quantum" [ngClass]="{'is-filled': isFilled(quantum)}" #quantum/>
                     <input type="number" min="0" name="block_time" placeholder="Block Time" required formControlName="block_time" [ngClass]="{'is-filled': isFilled(blockTime)}" #blockTime/>
                     <input type="number" min="0" name="change_time" placeholder="Change Time" required formControlName="change_time" [ngClass]="{'is-filled': isFilled(changeTime)}"  #changeTime/>
 
